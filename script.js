@@ -86,23 +86,32 @@ const images = [
     "img/avata3.jpg"
 ];
 
-// Nhạc tự động phát khi load (mute), bỏ mute khi người dùng tương tác
-window.addEventListener('load', () => {
-    const music = document.getElementById('bg-music');
-    music.play().catch(() => {
-        console.log("Tự động phát nhạc bị chặn.");
-    });
+// === PHÁT NHẠC TƯƠNG THÍCH MỌI THIẾT BỊ ===
+window.addEventListener("load", () => {
+  const music = document.getElementById("bg-music");
 
-    function unmuteMusic() {
-        music.muted = false;
-        music.play();
-        window.removeEventListener('click', unmuteMusic);
-        window.removeEventListener('touchstart', unmuteMusic);
-    }
+  // Cố gắng phát khi load
+  music.play().catch(() => {});
 
-    window.addEventListener('click', unmuteMusic);
-    window.addEventListener('touchstart', unmuteMusic);
+  // Khi người dùng chạm lần đầu (điện thoại)
+  document.body.addEventListener(
+    "touchstart",
+    function () {
+      music.play().catch(() => {});
+    },
+    { once: true }
+  );
+
+  // Khi người dùng click lần đầu (laptop)
+  document.body.addEventListener(
+    "click",
+    function () {
+      music.play().catch(() => {});
+    },
+    { once: true }
+  );
 });
+
 
 // Hiện popup ảnh + lời chúc từng chữ và giữ popup 3 giây
 function showWishPopup() {
@@ -167,3 +176,4 @@ setInterval(() => {
     createLantern();
     createLantern();
 }, 700);
+
