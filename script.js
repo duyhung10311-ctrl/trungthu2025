@@ -120,8 +120,10 @@ function showWishPopup() {
     const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
     const randomImg = images[Math.floor(Math.random() * images.length)];
 
-    popup.innerHTML = `<img src="${randomImg}" alt="Wish Image" style="max-width: 100px; border-radius: 8px; margin-bottom: 10px;" />
-                       <div id="wish-text" style="font-size: 1.3rem; font-weight: 600; color: #d97706;"></div>`;
+    popup.innerHTML = `
+        <img src="${randomImg}" alt="Wish Image" style="max-width: 100px; border-radius: 8px; margin-bottom: 10px;" />
+        <div id="wish-text" style="font-size: 1.3rem; font-weight: 600; color: #d97706;"></div>
+    `;
 
     popup.style.display = "block";
 
@@ -136,6 +138,7 @@ function showWishPopup() {
             index++;
             setTimeout(typeWriter, 60);
         } else {
+            // ✅ Chờ 3 giây sau khi hiện xong chữ rồi mới ẩn popup
             setTimeout(() => {
                 popup.style.display = "none";
             }, 3000);
@@ -144,6 +147,7 @@ function showWishPopup() {
 
     typeWriter();
 }
+
 
 // Tạo đèn lồng bay lên
 function createLantern() {
@@ -176,4 +180,5 @@ setInterval(() => {
     createLantern();
     createLantern();
 }, 700);
+
 
