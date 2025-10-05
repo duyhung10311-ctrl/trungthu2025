@@ -1,0 +1,141 @@
+body {
+    font-family: 'Mali', cursive;
+    background: linear-gradient(to top, rgb(6, 0, 20), #00020a);
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+#starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    display: block;
+    pointer-events: none;
+}
+
+.moon {
+    position: fixed;
+    top: 50px;
+    right: 80px;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle at 30% 30%, #fff, #ddd 70%);
+    border-radius: 50%;
+    box-shadow:
+        0 0 30px rgba(255, 255, 200, 0.8),
+        0 0 60px rgba(255, 255, 180, 0.6),
+        0 0 90px rgba(255, 255, 150, 0.4);
+    z-index: 0;
+    pointer-events: none;
+}
+
+@media (max-width: 600px) {
+    .moon {
+        top: 20px;
+        right: 20px;
+        width: 70px;
+        height: 70px;
+        box-shadow:
+            0 0 15px rgba(255, 255, 200, 0.8),
+            0 0 30px rgba(255, 255, 180, 0.6),
+            0 0 50px rgba(255, 255, 150, 0.4);
+    }
+}
+
+#lantern-container {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.lantern {
+    position: absolute;
+    bottom: 0;
+    width: 60px;
+    cursor: pointer;
+    user-select: none;
+    will-change: transform, opacity;
+    filter: drop-shadow(0 0 6px rgba(255, 150, 50, 0.7));
+    opacity: 0.9;
+    transition: transform 8s ease-out, bottom 8s ease-out, opacity 8s ease-out;
+}
+
+#wish-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    color: #d97706;
+    font-family: 'Mali', cursive;
+    padding: 30px 25px;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: none;
+    z-index: 10000;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+    text-align: center;
+    max-width: 80vw;
+}
+
+#wish-popup img {
+    max-width: 150px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 600px) {
+    #wish-popup {
+        padding: 20px 15px;
+        font-size: 1.2rem;
+    }
+}
+
+#skywatchers {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    max-width: 90%;
+    z-index: 1;
+    opacity: 0.8;
+    pointer-events: none;
+    user-select: none;
+    z-index: 9999999;
+}
+#lantern-container {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* giữ nguyên */
+    z-index: 1;
+}
+
+.lantern {
+    position: absolute;
+    bottom: 0;
+    width: 60px;
+    cursor: pointer;
+    user-select: none;
+    will-change: transform, opacity;
+    filter: drop-shadow(0 0 6px rgba(255, 150, 50, 0.7));
+    opacity: 0.9;
+    transition: transform 8s ease-out, bottom 8s ease-out, opacity 8s ease-out;
+    pointer-events: auto; /* Thêm để nhận sự kiện click */
+}
